@@ -1,4 +1,4 @@
-import { createElement, useEffect } from "react";
+import { useEffect } from "react";
 import { TextStyle, ViewStyle } from "react-native";
 // @ts-ignore
 import CompassHeading from "react-native-compass-heading";
@@ -17,9 +17,9 @@ export function CompassEvent({ heading }: CompassEventProps<CustomStyle>): any {
     useEffect(() => {
         const degree_update_rate = 3;
 
-        CompassHeading.start(degree_update_rate, ({ headingValue, accuracy }: any) => {
-            console.info("CompassHeading: ", headingValue, accuracy);
-            heading.setValue(new Big(headingValue));
+        CompassHeading.start(degree_update_rate, (update: any) => {
+            console.info("CompassHeading: ", update.heading, update.accuracy);
+            heading.setValue(new Big(update.heading));
         });
 
         return () => {
