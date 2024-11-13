@@ -26,7 +26,7 @@
     "@types/big.js": "^6.0.2"
   },
   "dependencies": {
-
+    "react-native-compass-heading": "^2.0.0"
   },
   "resolutions": {
     "react": "^18.2.0",

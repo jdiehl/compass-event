@@ -4,11 +4,13 @@
  * @author Mendix Widgets Framework Team
  */
 import { CSSProperties } from "react";
+import { EditableValue } from "mendix";
+import { Big } from "big.js";
 
 export interface CompassEventProps<Style> {
     name: string;
     style: Style[];
-    yourName: string;
+    heading: EditableValue<Big>;
 }
 
 export interface CompassEventPreviewProps {
@@ -21,5 +23,6 @@ export interface CompassEventPreviewProps {
     styleObject?: CSSProperties;
     readOnly: boolean;
     renderMode?: "design" | "xray" | "structure";
-    yourName: string;
+    heading: string;
+    onHeadingChange: {} | null;
 }
