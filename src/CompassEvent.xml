@@ -7,11 +7,16 @@
     <icon/>
     <properties>
         <propertyGroup caption="General">
-            <property key="heading" type="attribute" onChange="onHeadingChange">
+            <property key="degreeUpdateRate" type="integer" defaultValue="3">
+                <caption>Update Rate</caption>
+                <description>How many degrees need to change to send an update</description>
+            </property>
+            <property key="headingValue" type="attribute" onChange="onHeadingChange">
                 <caption>Heading</caption>
                 <description></description>
                 <attributeTypes>
                     <attributeType name="Integer"/>
+                    <attributeType name="Decimal"/>
                 </attributeTypes>
             </property>
 

@@ -10,7 +10,8 @@ import { Big } from "big.js";
 export interface CompassEventProps<Style> {
     name: string;
     style: Style[];
-    heading: EditableValue<Big>;
+    degreeUpdateRate: number;
+    headingValue: EditableValue<Big>;
 }
 
 export interface CompassEventPreviewProps {
@@ -23,6 +24,7 @@ export interface CompassEventPreviewProps {
     styleObject?: CSSProperties;
     readOnly: boolean;
     renderMode?: "design" | "xray" | "structure";
-    heading: string;
+    degreeUpdateRate: number | null;
+    headingValue: string;
     onHeadingChange: {} | null;
 }

@@ -13,19 +13,22 @@ export interface CustomStyle extends Style {
     label: TextStyle;
 }
 
-export function CompassEvent({ heading }: CompassEventProps<CustomStyle>): any {
+export function CompassEvent({ degreeUpdateRate, headingValue }: CompassEventProps<CustomStyle>): any {
     useEffect(() => {
-        const degree_update_rate = 3;
+        if (headingValue.status !== "available") {
+            return;
+        }
 
-        CompassHeading.start(degree_update_rate, (update: any) => {
-            console.info("CompassHeading: ", update.heading, update.accuracy);
-            heading.setValue(new Big(update.heading));
+        CompassHeading.start(degreeUpdateRate, ({ heading, accuracy }: any) => {
+            const bigValue = new Big(heading).round();
+            console.debug("CompassHeading: ", heading, accuracy);
+            headingValue.setValue(bigValue);
         });
 
         return () => {
             CompassHeading.stop();
         };
-    }, []);
+    }, [headingValue.status, degreeUpdateRate]);
 
     return null;
 }
